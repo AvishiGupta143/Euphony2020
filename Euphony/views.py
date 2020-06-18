@@ -17,8 +17,8 @@ def Homepage(request):
     Data = {
         'EuphonyLogo': Images.objects.get(Name='EuphonyLogo').File.url,
         'BG1': Images.objects.get(Name='BG1').File.url,
-        'BG': Images.objects.get(Name='BG2').File.url,
-        # 'BG10': Images.objects.get(Name='BG10').File.url,
+        'BG2': Images.objects.get(Name='BG2').File.url,
+        'BG10': Images.objects.get(Name='BG10').File.url,
         # 'BGEDITOR': Images.objects.get(Name='BGEDITOR').File.url,
         # 'BG15': Images.objects.get(Name='BG15').File.url,
         # 'BG16': Images.objects.get(Name='BG16').File.url,
