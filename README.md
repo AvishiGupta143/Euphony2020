@@ -52,6 +52,7 @@ Django Framework for the Backend of the Website.
 
 ## Deployment
 
+I have also linked my Project's Media Databae to the AWS S3 bucket for efficient use.
 It can be easily Deployed on any web server such as AWS EC2, Python Anywhere, Heroku etc.
 
 ## Built With
