@@ -1,0 +1,77 @@
+{% extends 'FinalBase.html' %}
+{% load static %}
+{% block title %}
+    | Login
+{% endblock %}
+{% block Body %}
+
+    <style>
+    body{
+        background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url("{{ BG18 }}");
+        background-position: bottom;
+    }
+
+    input[type='text'],
+    input[type='password'],
+    input[type='email']
+    {
+        outline: none;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid white;
+        user-select: none;
+        color: white;
+        padding: 12px 12px;
+        width: 200px;
+        -webkit-transition: width .35s ease-in-out;
+        transition: width .35s ease-in-out;
+
+    }
+    input[type='password']:focus,
+    input[type='email']:focus,
+    input[type='text']:focus
+    {
+      width: 300px;border-bottom: 1px solid dodgerblue;
+    }
+    ::placeholder
+    {
+        color: white;
+        opacity: 50%;
+    }
+    .help{
+        position: absolute;
+        left: 560px;
+        top: 200px;
+    }
+    </style>
+
+    <div class="container" style="color:white; text-align: center;">
+        <h1 id="MESSAGE">Welcome! This is the Help Page!</h1>
+        <form id="FORM" class="help" action="" method="post">
+            {% csrf_token %}
+          <h5>Student Name: </h5>
+          <input type="text" id="Student_Name" placeholder="Student Name" name="Student_Name"><br><br>
+            <h5>Email : </h5>
+            <input  type="email" placeholder="Enter Email" name="Student_Email"/><br><br>
+
+          <h5>Enter Your Query Here: </h5>
+          <textarea style="background-color: #90e2fa" name="message" id="t_area" rows="4" cols="50"></textarea><br><br>
+          <input class="btn btn-light" type="submit" value="Submit" onclick="FNC();">
+        </form>
+    </div>
+    <script>
+        function FNC() {
+            document.getElementById('FORM').style.display = 'none';
+            document.getElementById('MESSAGE').innerHTML = 'Your Query has been recieved.. You will be reached out soon!'
+        }
+
+    </script>
+
+
+
+
+
+
+
+
+{% endblock %}

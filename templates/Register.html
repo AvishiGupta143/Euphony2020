@@ -1,0 +1,141 @@
+{% extends 'FinalBase.html' %}
+{% load static %}
+{% block title %}
+    | Register
+{% endblock %}
+{% block Body %}
+
+    <style>
+    body{
+        background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("{{ MIC }}");
+        background-position: center;
+    }
+    label{
+        color: white;
+    }
+    input[type='text'],
+    input[type='password'],
+    input[type='email']
+    {
+        outline: none;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid white;
+        user-select: none;
+        color: white;
+        padding: 12px 12px;
+        width: 200px;
+        -webkit-transition: width .35s ease-in-out;
+        transition: width .35s ease-in-out;
+
+    }
+    input[type='password']:focus,
+    input[type='email']:focus,
+    input[type=text]:focus
+    {
+      width: 300px;border-bottom: 1px solid dodgerblue;
+    }
+    ::placeholder
+    {
+        color: white;
+        opacity: 50%;
+    }
+    .Headings
+    {
+        color: white;
+        position: relative;
+        top: 20px;
+        left: 50px;
+    }
+    .Answers
+    {
+        position: relative;
+        left: 100px;
+        top: 10px;
+    }
+    input[type='file']{
+        position: relative;
+        top: 20px;
+    }
+    .btn{
+        position: relative;
+        top: 25px;
+        left: 180px;
+
+    }
+    </style>
+
+    <span id="PASSERROR" style="position: absolute; top: 580px; left: 750px; color: red;"></span>
+    <span id="EMAILERROR" style="position: absolute; top: 490px; left: 750px; color: red;"></span>
+    <div class="Register" style="position: absolute; left: 300px;">
+            <h2 style=" text-align: center; color: white;" >Welcome to Euphony!</h2>
+            <h4 style="position: relative; top: 10px; text-align: center; color: white;" >Please Register Yourself to become a user.</h4>
+            <h6 style="position: relative; top: 15px; text-align: center; color: white;"  >Already Registered? <a href="{% url 'Login' %}"><span style="margin-left: 10px;">Login Here</span></a></h6>
+            <form action="" method="POST" enctype="multipart/form-data" autocomplete="off">
+                {% csrf_token %}
+                <span class="Headings">Student Name:</span>
+                <input class="Answers" id="Student_Name" type="text" placeholder="Enter Student Name" name="Student_Name" required/><br>
+
+                <span class="Headings">Date of Birth:</span>
+                <input class="Answers" id="dob" type="text" placeholder="yyyy-mm-dd" name="Student_DOB" required/>
+                <br>
+
+                <span class="Headings">Year:</span>
+                <input class="Answers" id="dob" type="text" placeholder="Present College Year" name="Student_Year" required/>
+                <br>
+
+                <span class="Headings">Branch:</span>
+                <input class="Answers" id="branch" type="text" placeholder="Enter Student Branch" name="Student_Branch" required/>
+                <br>
+
+                <span class="Headings">Address:</span>
+                <input class="Answers" id="address" type="text" placeholder="Enter Address" name="Student_Address" required/>
+                <br>
+
+                <span class="Headings">Contact No:</span>
+                <input class="Answers" id="contact" type="text" placeholder="Contact_Number" name="Student_Contact" required/>
+                <br>
+
+                <span class="Headings">Student Email:</span>
+                <input class="Answers" id="email" type="email" placeholder="Enter Email" name="Student_Email" required/>
+                <br>
+
+                <span class="Headings">Password:</span>
+                <input class="Answers" id="password" type="password" placeholder="Enter Password" name="Password1" required/>
+                <br>
+
+                <span class="Headings">Re-enter Password:</span>
+                <input class="Answers" id="password" type="password" placeholder="Re-enter Password" name="Password2" required/>
+                <br><br>
+
+                <span class="Headings">Select Profile Picture:</span>
+                <input style="color: white;" class="Answers" type="file" id="myfile" name="Image" required>
+                <br><br>
+
+               <input class="btn btn-light" type="submit" value="Submit">
+            </form>
+        </div>
+    <script>
+        {% for i in messages %}
+            if ("{{ i }}" === 'Password Should Match') {
+                document.getElementById('PASSERROR').innerHTML = 'Password Should Match'
+            }
+            else if ("{{ i }}" === 'Email In Use') {
+                document.getElementById('EMAILERROR').innerHTML = 'Email In Use'
+            }
+        {% endfor %}
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

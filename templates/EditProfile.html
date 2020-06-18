@@ -1,0 +1,157 @@
+{% extends 'FinalBase.html' %}
+{% load static %}
+{% load CustomTemplates %}
+{% block title %}
+    | Edit Profile
+{% endblock %}
+{% block Body %}
+    <style>
+    body{
+        width: 1530px;
+        height: 500px;
+        background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),url("{{ BG10 }}");
+        background-position: center;
+    }
+    .tophalf{
+        position: relative;
+        left: 380px;
+        top: 200px;
+        width: 790px;
+        height: 1100px;
+        background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("{{ Pro2 }}");
+        background-position: center;
+        background-size: cover;
+        box-shadow: 0 0 20px #9c9797;
+    }
+    img{
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        position: relative;
+        top: -130px;
+        left: 270px;
+        box-shadow: 0 0 30px black;
+    }
+    .headers{
+        color: black;
+        height: 600px;
+        width: 250px;
+        position: relative;
+        top: -50px;
+        left: 50px;
+        text-align: center;
+        border-right: 1px solid black;
+    }
+    .headers span{
+        font-size: 30px;
+        letter-spacing: 2px;
+        line-height: 80px;
+    }
+    .answers{
+        color: black;
+        height: 600px;
+        width: 450px;
+        position: relative;
+        top: -654px;
+        left: 350px;
+    }
+    .answers input {
+        font-size: 20px;
+        position: relative;
+        top: 20px;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        width: 260px;
+        border-bottom: 1px solid black;
+        transition: width 0.2s ease;
+    }
+
+    .answers input:focus {
+        width: 350px;
+    }
+
+    .ButtonDesign{
+        background-color: #1489ef;
+        border: none;
+        outline: none;
+        border-radius: 12px;
+        width: 170px;
+        transition: 0.2s ease;
+    }
+    .ButtonDesign:hover{
+        transform: scale(1.2);
+        color: white;
+    }
+    .Address
+    {
+        line-height: 30px; position: relative; top: 55px; width: 400px; height: 100px; font-size: 15px; outline: none; background-color: transparent; border: 1px solid black; overflow-y: auto;
+    }
+    </style>
+
+    <div class="tophalf">
+        <form action="" method="POST" enctype="multipart/form-data" autocomplete="off">
+            {% csrf_token %}
+            <img id="SELECTEDPICTURE" src="{{ Profile.Student_ProfilePic.url }}">
+            <input id="PICOPEN" type="file" style="display: none;" name="DP">
+            <label for="PICOPEN" style="position: relative; left: 115px;padding-left: 10px; top: -125px; opacity: 0.8; width: 50px;" class="ButtonDesign">Edit</label>
+            <button style="z-index:99; position: relative; top: 810px; left: 50px;" class="ButtonDesign" type="submit">Save<br>Profile</button>
+            <h2 style="text-align: center; font-size: 40px;  color: #000000; position: relative; top: -90px;" >{{ Profile.Student_Name }}</h2>
+            <div class="headers">
+                <span>Name:</span>
+                <br>
+
+                <span>Email ID:</span>
+                <br>
+
+                <span>Year:</span>
+                <br>
+
+                <span>Branch:</span>
+                <br>
+
+                <span>Roll No:</span>
+                <br>
+
+                <span>Contact No:</span>
+                <br>
+
+                <span>Address:</span>
+                <br>
+
+            </div>
+            <div class="answers">
+                <input value="{{ Profile.Student_Name }}" name="Student_Name">
+                <br>
+                <input value="{{ Profile.Email }}" name="Email" style="top: 70px; margin-bottom: 50px;">
+                <br>
+                <input value="{{ Profile.Year }}" name="Year" style="top: 70px; margin-bottom: 50px;">
+                <br>
+                <input value="{{ Profile.Branch }}" name="Branch" style="border-bottom: none; cursor: not-allowed; top: 60px; margin-bottom: 50px;" readonly>
+                <br>
+                <input value="{{ Profile.RollNo }}" name="RollNo" style="border-bottom: none; cursor: not-allowed; top: 55px; margin-bottom: 50px;" readonly>
+                <br>
+                <input value="{{ Profile.Contact }}" name="Contact" style="top: 50px; margin-bottom: 50px;">
+                <br>
+                <textarea class="Address" name="Address">{{ Profile.Address }}</textarea>
+                <br>
+            </div>
+        </form>
+    </div>
+    <script>
+        $('document').ready(function ()
+        {
+            $("#PICOPEN").change(function () {
+                if (this.files && this.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        console.log(e.target.result)
+                        $('#SELECTEDPICTURE').attr('src', e.target.result);
+                    }
+                    console.log(this.files)
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+        });
+    </script>
+{% endblock %}

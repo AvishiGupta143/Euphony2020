@@ -1,0 +1,115 @@
+{% extends 'FinalBase.html' %}
+{% load static %}
+{% block title %}
+    | Gallery
+{% endblock %}
+{% block Body %}
+
+<style>
+
+body {
+     background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("{{ Pro1 }}");
+}
+.GalleryItem{
+    margin-right: 60px;
+    width: 300px;
+    height: 300px;
+    background-color: #efdf93;
+    border-radius: 25px;
+    margin-top: 100px;
+    box-shadow: 0 0 20px #e8dede;
+    display: inline-block;
+}
+img{
+    width: 200px;
+    height: 150px;
+    position: relative;
+    top: 25px;
+    left: 50px;
+    transition: 0.2s ease;
+}
+img:hover
+    {
+        transform: scale(1.5);
+    }
+
+</style>
+
+      <div class="container">
+            <h3 style="margin-top:20px;font-size: 60px; text-align: center; color: white;">Team Euphony Gallery</h3>
+            <h5 style="margin-top:30px;font-size: 30px; text-align: center; color: white;">Here's a sneak peek into our lives at Euphony!</h5>
+
+            <div class="GalleryItem">
+                <h3 style="position: relative; top: 30px;font-family: 'Nunito', sans-serif; text-align: center; color: black;">Jam From Home</h3>
+                <a href="{% url 'ParticularAlbum' 'Jam From Home' %}" ><img src="{{ Jam }}"></a>
+                <h4 style="margin-top:30px;font-family: 'Nunito', sans-serif; text-align: center; color: black;">Quarantine Jamming</h4>
+            </div>
+          
+            <div class="GalleryItem">
+                <h3 style="position: relative; top: 30px;font-family: 'Nunito', sans-serif; text-align: center; color: black;">Live Music</h3>
+                <a href="{% url 'ParticularAlbum' 'Jamming Session' %}" ><img src="{{ JammingSession }}"></a>
+                <h4 style="margin-top:30px;font-family: 'Nunito', sans-serif; text-align: center; color: black;">The Jamming Session</h4>
+            </div>
+
+            <div class="GalleryItem">
+                <h3 style="position: relative; top: 30px;font-family: 'Nunito', sans-serif; text-align: center; color: black;">Bandish</h3>
+                <a href="{% url 'ParticularAlbum' 'Bandish' %}" ><img src="{{ Bandish }}"></a>
+                <h4 style="margin-top:30px;font-family: 'Nunito', sans-serif; text-align: center; color: black;">The Musical Evening</h4>
+            </div>
+
+            <div class="GalleryItem">
+                <h3 style="position: relative; top: 30px;font-family: 'Nunito', sans-serif; text-align: center; color: black;">Reverb</h3>
+                <a href="{% url 'ParticularAlbum' 'Reverb' %}" ><img src="{{ REVERBGALLERY }}"></a>
+                <h4 style="margin-top:30px;font-family: 'Nunito', sans-serif; text-align: center; color: black;">The Recruitment Drive</h4>
+            </div>
+
+            <div class="GalleryItem">
+                <h3 style="position: relative; top: 30px;font-family: 'Nunito', sans-serif; text-align: center; color: black;">IITs/NITs/NCR</h3>
+                <a href="{% url 'ParticularAlbum' 'Inter Colleges' %}" ><img src="{{ ROPAR20 }}"></a>
+                <h4 style="margin-top:30px;font-family: 'Nunito', sans-serif; text-align: center; color: black;">Inter-Colleges Events</h4>
+            </div>
+
+            <div class="GalleryItem">
+                <h3 style="position: relative; top: 30px;font-family: 'Nunito', sans-serif; text-align: center; color: black;">AKTU Cultural Fest</h3>
+                <a href="{% url 'ParticularAlbum' 'Zonals' %}" ><img src="{{ AKTU }}"></a>
+                <h4 style="margin-top:30px;font-family: 'Nunito', sans-serif; text-align: center; color: black;">Zonals/States</h4>
+            </div>
+
+            <div class="GalleryItem">
+                <h3 style="position: relative; top: 30px;font-family: 'Nunito', sans-serif; text-align: center; color: black;">Saksham</h3>
+                <a href="{% url 'ParticularAlbum' 'Saksham' %}" ><img src="{{ Saksham }}"></a>
+                <h4 style="margin-top:30px;font-family: 'Nunito', sans-serif; text-align: center; color: black;">Departmental Sports Meet</h4>
+            </div>
+
+            <div class="GalleryItem">
+                <h3 style="position: relative; top: 30px;font-family: 'Nunito', sans-serif; text-align: center; color: black;">Convocation</h3>
+                <a href="{% url 'ParticularAlbum' 'Convocation' %}" ><img src="{{ Convocation }}"></a>
+                <h4 style="margin-top:30px;font-family: 'Nunito', sans-serif; text-align: center; color: black;">The Felicitation Service</h4>
+            </div>
+
+            <div class="GalleryItem">
+                <h3 style="position: relative; top: 30px;font-family: 'Nunito', sans-serif; text-align: center; color: black;">Freshers</h3>
+                <a href="{% url 'ParticularAlbum' 'Farewell & Freshers' %}" ><img src="{{ Freshers }}"></a>
+                <h4 style="margin-top:30px;font-family: 'Nunito', sans-serif; text-align: center; color: black;">& Farewell Party</h4>
+            </div>
+
+            <div class="GalleryItem">
+                <h3 style="position: relative; top: 30px;font-family: 'Nunito', sans-serif; text-align: center; color: black;">Gandhi Jayanti</h3>
+                <a href="{% url 'ParticularAlbum' 'Gandhi Jayanti & Garba' %}" ><img src="{{ Garba }}"></a>
+                <h4 style="margin-top:30px;font-family: 'Nunito', sans-serif; text-align: center; color: black;">& Garba Night</h4>
+            </div>
+
+            <div class="GalleryItem">
+                <h3 style="position: relative; top: 30px;font-family: 'Nunito', sans-serif; text-align: center; color: black;">Landcrafts Golflinks</h3>
+                <a href="{% url 'ParticularAlbum' 'Landcrafts' %}" ><img src="{{ Landcrafts }}"></a>
+                <h4 style="margin-top:30px;font-family: 'Nunito', sans-serif; text-align: center; color: black;">The Flower Festival</h4>
+            </div>
+
+            <div class="GalleryItem">
+                <h3 style="position: relative; top: 30px;font-family: 'Nunito', sans-serif; text-align: center; color: black;">Random</h3>
+                <a href="{% url 'ParticularAlbum' 'Random' %}" ><img src="{{ Random }}"></a>
+                <h4 style="margin-top:30px;font-family: 'Nunito', sans-serif; text-align: center; color: black;">Our Random Sessions</h4>
+            </div>
+      </div>
+
+{% endblock %}

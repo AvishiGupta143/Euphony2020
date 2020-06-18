@@ -1,0 +1,146 @@
+{% extends 'FinalBase.html' %}
+{% load static %}
+{% load CustomTemplates %}
+{% block title %}
+    | Event Form
+{% endblock %}
+{% block Body %}
+    <style>
+    body{
+        background-image: url("{{ BG11 }}");
+    }
+    label{
+        color: white;
+    }
+    input[type='text'],
+    input[type='password'],
+    input[type='email'],
+    input[type='url']
+    {
+        outline: none;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid white;
+        user-select: none;
+        color: white;
+        padding: 12px 12px;
+        width: 200px;
+        -webkit-transition: width .35s ease-in-out;
+        transition: width .35s ease-in-out;
+
+    }
+    input[type='password']:focus,
+    input[type='email']:focus,
+    input[type='text']:focus,
+    input[type='url']:focus
+    {
+      width: 300px;border-bottom: 1px solid dodgerblue;
+    }
+    ::placeholder
+    {
+        color: white;
+        opacity: 50%;
+    }
+    .ButtonDesign
+    {
+        background-color: lime;
+        width: 100px;
+        height: 50px;
+        border-radius: 12px;
+        color: white;
+        padding: 12px 12px;
+        transition: 0.2s ease;
+        cursor: pointer;
+        z-index: 99;
+        border: none;
+        outline: none;
+        user-select: none;
+    }
+    .Headings
+    {
+        color: white;
+        position: relative;
+        top: 50px;
+        left: 600px;
+    }
+    .Answers
+    {
+        color: white;
+        position: relative;
+        left: 650px;
+        top: 40px;
+    }
+    input[type='file']{
+        position: relative;
+        top: 50px;
+    }
+    .btn{
+        position: relative;
+        top: 75px;
+        left: 730px;
+    }
+    </style>
+
+    <div class="EventForm" id="EventForm">
+        <h4 style="color: white; text-align: center; position: absolute; top: 90px; left: 610px;">Registration Form For Event</h4>
+        <form action="" method="POST" enctype="multipart/form-data" autocomplete="off">
+            {% csrf_token %}
+            <span class="Headings">Student Name:</span>
+            <input class="Answers" id="Student_Name" type="text" value="{{ Profile.Student_Name }}" name="Student_Name" readonly/>
+            <br>
+
+            <span class="Headings">Year:</span>
+            <input class="Answers" id="dob" type="text" value="{{ Profile.Year }}" name="Student_Year" readonly/>
+            <br>
+
+            <span class="Headings">Branch:</span>
+            <input class="Answers" id="branch" type="text" value="{{ Profile.Branch }}" name="Student_Branch" readonly/>
+            <br>
+
+            <span class="Headings">Roll No:</span>
+            <input class="Answers" id="RollNo" type="text" value="{{ Profile.RollNo }}" name="Student_RollNo" readonly/>
+            <br>
+
+            <span class="Headings">Contact No:</span>
+            <input class="Answers" id="contact" type="text" placeholder="Contact_Number" name="Student_Contact" required/>
+            <br>
+
+            <span class="Headings">Student Email:</span>
+            <input class="Answers" id="email" type="email" value="{{ Profile.Email }}" name="Student_Email" readonly/>
+            <br>
+
+            <span class="Headings">Domain:</span>
+            <select style="position: relative; left: 700px; top: 50px; margin-bottom: 20px; margin-top: 10px;" name="Domain" id="Domain">
+                {% for i in Domains %}
+                    <option value="{{ i.Name }}">{{ i.Name }}</option>
+                {% endfor %}
+            </select>
+            <br>
+
+            <span class="Headings">Event Name:</span>
+            <input class="Answers" id="EventName" type="text" value="{{ Registering_For.Name }}" name="EventName" readonly/>
+            <br>
+
+            <span class="Headings">Audition Link:</span>
+            <input class="Answers" id="AudiLink" type="url" placeholder="Paste Audition Link" name="AudiLink" />
+            <br><br>
+
+            <span class="Headings">Audition Video:</span>
+            <input class="Answers" id="AudiVideo" type="file" placeholder="AudiVideo" name="AudiVideo"/>
+            <br>
+
+            <input class="btn btn-light" type="submit" onclick="DisplayMessage();" value="Submit" />
+        </form>
+    </div>
+    <div id="Thanks" style="font-size: 35px; color: white; position: relative; top: 150px; left: 400px; text-align: center; width: 800px; display: none;">
+        Thankyou!<br>You have been Registered Successfully<br>An Email has been sent to you <br>on your registered Email Address.
+    </div>
+    <script>
+        function DisplayMessage()
+        {
+            document.getElementById('EventForm').style.display = 'none';
+            document.getElementById('Thanks').style.display = 'initial';
+        }
+    </script>
+
+{% endblock %}

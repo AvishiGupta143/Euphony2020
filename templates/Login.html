@@ -1,0 +1,88 @@
+{% extends 'FinalBase.html' %}
+{% load static %}
+{% block title %}
+    | Login
+{% endblock %}
+{% block Body %}
+
+    <style>
+    body{
+        background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("{{ BG17 }}");
+    }
+
+    input[type='password'],
+    input[type='email']
+    {
+        outline: none;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid white;
+        user-select: none;
+        color: white;
+        padding: 12px 12px;
+        width: 200px;
+        -webkit-transition: width .35s ease-in-out;
+        transition: width .35s ease-in-out;
+
+    }
+
+
+    input[type='password']:focus,
+    input[type='email']:focus
+    {
+      width: 300px;
+        border-bottom: 1px solid dodgerblue;
+    }
+
+
+    ::placeholder
+    {
+        color: white;
+        opacity: 50%;
+    }
+
+
+    input[type='password']{
+        position: absolute;
+        left: 470px;
+        top: 230px;
+    }
+
+
+    input[type='email']{
+        position: absolute;
+        left: 470px;
+        top: 130px;
+    }
+
+    </style>
+
+
+    <body>
+    <span id="LOGINERROR" style="position: absolute; top: 200px; left: 690px; color: red;"></span>
+    <div class="container" style="color:white; text-align: center; position: absolute; top: 150px; left: 200px;">
+        <h2>Please Login</h2>
+        <form action="" method="post">
+            {% csrf_token %}
+            <h5 style="position: absolute; top: 100px; left: 540px;">Email : </h5>
+            <input  type="email" placeholder="Enter Email" name="Student_Email"/>
+
+            <h5 style="position: absolute; top: 200px; left: 530px;" class="headers">Password : </h5>
+            <input  type="password" placeholder="Enter Password" name="Password1"/>
+
+            <h6 style="position: relative; top: 260px; text-align: center; color: white;"  >Don't have an Account? <a href="{% url 'Register' %}"><span style="margin-left: 10px;">Register Here</span></a></h6>
+
+            <input style="position: absolute; top: 360px; left: 520px;" class="btn btn-light" type="submit" value="Submit">
+        </form>
+        <a style="position: absolute; top: 430px; left: 500px;" href="{% url 'ForgotPassword' %}">Forgot Password?</a>
+    </div>
+    <script>
+        {% for i in messages %}
+            if ("{{ i }}" === 'Invalid Credentials') {
+                document.getElementById('LOGINERROR').innerHTML = 'Invalid Credentials'
+            }
+        {% endfor %}
+    </script>
+    </body>
+
+{% endblock %}
