@@ -1,7 +1,7 @@
 # Euphony2020
 Euphony Official Website
 
-This is a desktop website of the music society of my college. 
+Website for the music society of my college. 
 It is Basically made for the smooth processing of the events that may be held in our college.
 It will also make the students aware of the various ongoing events and the upcoming events to be held in different Colleges.
 
